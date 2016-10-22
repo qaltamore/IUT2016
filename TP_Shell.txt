@@ -1,0 +1,58 @@
+#Compte le nombre de fichiers Java
+
+nb_lignes=$(find . -name \*.java | wc -l)
+
+echo $nb_lignes "fichiers Java trouvés";
+
+
+
+#Compte le volume total des fichiers java
+
+commande=$(find . -name \*.java)
+
+for file in $commande;
+do
+ 	count=$(cat $file | wc -l)
+ 	total=$(($total + $count))
+
+ 	echo "Total : " $total;
+done
+
+
+
+
+#Liste les 10 plus gros fichiers java
+
+commande=$(find . -name \*.java -exec du -s {} \; | sort -n | tail -n 10)
+
+for file in $commande;
+do 
+ 	echo $file;
+done
+
+
+
+
+#Liste les fichiers java et leur nombre de lignes
+
+commande=$(find . -name \*.java)
+
+for file in $commande;
+do
+ 	count=$(cat $file | wc -l)
+ 
+ 	echo $file;
+	echo " Nombre de Lignes : " $count;
+done
+
+
+
+
+#Liste les fichiers java
+
+commande=$(find . -name \*.java)
+
+for file in $commande;
+do
+ 	echo $file;
+done
